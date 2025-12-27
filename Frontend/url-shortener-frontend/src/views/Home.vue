@@ -10,14 +10,13 @@ const loading = ref(false)
 const createLoading = ref(false)
 const error = ref('')
 const userId = ref(null)
+const showToast = ref(false)
 
 // Fetch URLs on mount
 const fetchUrls = async () => {
-  if (!userId.value) return
-  
   loading.value = true
   try {
-    const response = await api.get(`/urls/${userId.value}`)
+    const response = await api.get('/urls/')
     urls.value = response.data
   } catch (err) {
     console.error("Erro ao buscar URLs", err)
@@ -32,15 +31,10 @@ const shortenUrl = async () => {
     error.value = "Informe uma URL"
     return
   }
-  
-  if (!userId.value) {
-    error.value = "Usuário não autenticado"
-    return
-  }
 
   try {
     createLoading.value = true
-    const response = await api.post(`/urls/${userId.value}`, {
+    const response = await api.post('/urls/', {
       long_url: longUrl.value,
     })
     
@@ -72,7 +66,10 @@ const getShortUrl = (urlObj) => {
 
 const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text)
-  // Could add a toast notification here
+  showToast.value = true
+  setTimeout(() => {
+    showToast.value = false
+  }, 2000)
 }
 
 onMounted(() => {
@@ -151,6 +148,13 @@ onMounted(() => {
         </div>
       </section>
     </main>
+
+    <!-- Toast Notification -->
+    <Transition name="toast">
+      <div v-if="showToast" class="toast">
+        Copiado para a área de transferência!
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -284,5 +288,31 @@ onMounted(() => {
     text-align: center;
     color: var(--text-muted);
     padding: 40px;
+}
+
+/* Toast Styles */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #10b981;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  font-weight: 500;
+}
+
+.toast-enter-active,
+.toast-leave-active {
+  transition: all 0.3s ease;
+}
+
+.toast-enter-from,
+.toast-leave-to {
+  opacity: 0;
+  transform: translate(-50%, 20px);
 }
 </style>
