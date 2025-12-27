@@ -116,14 +116,6 @@ Cria uma nova URL encurtada (requer autenticação)
 }
 ```
 
-## 🎨 Características do Design
-
-- **Dark Mode First**: Design escuro moderno e elegante
-- **Glassmorphism**: Painéis translúcidos com efeito de vidro
-- **Gradientes Vibrantes**: Cores suaves e harmoniosas
-- **Animações Fluidas**: Transições e hover effects
-- **Responsivo**: Layout adaptável para diferentes telas
-
 ## 🔄 Fluxo de Autenticação
 
 1. Usuário faz login → Recebe access_token e refresh_token
@@ -134,38 +126,6 @@ Cria uma nova URL encurtada (requer autenticação)
    - Reexecuta a requisição original
 5. Se o refresh token expirar, redireciona para login
 
-## 📁 Estrutura do Projeto
-
-```
-Encurtador-Url/
-├── Backend/
-│   ├── database/
-│   │   └── database.py
-│   ├── models/
-│   │   └── models.py
-│   ├── routes/
-│   │   ├── auth_router.py
-│   │   └── url_router.py
-│   ├── utils/
-│   │   └── auth.py
-│   ├── main.py
-│   ├── requirements.txt
-│   └── .env
-└── Frontend/url-shortener-frontend/
-    ├── src/
-    │   ├── views/
-    │   │   ├── Home.vue
-    │   │   ├── Login.vue
-    │   │   └── Register.vue
-    │   ├── router/
-    │   │   └── index.js
-    │   ├── services/
-    │   │   └── api.js
-    │   ├── App.vue
-    │   ├── main.js
-    │   └── style.css
-    └── package.json
-```
 
 ## 🔒 Segurança
 
@@ -184,16 +144,6 @@ Antes de colocar em produção:
 3. **Use HTTPS** para todas as comunicações
 4. **Configure MongoDB** com autenticação
 5. **Use variáveis de ambiente** para configurações sensíveis
-
-## 🎯 Próximos Passos
-
-- [ ] Adicionar estatísticas de cliques
-- [ ] Implementar URLs customizadas
-- [ ] Adicionar validação de email
-- [ ] Implementar redefinição de senha
-- [ ] Adicionar paginação na listagem
-- [ ] Implementar exclusão de URLs
-- [ ] Adicionar testes automatizados
 
 ---
 
