@@ -1,4 +1,4 @@
-import base62
+import pybase62
 import hashlib
 
 def generate_hash_short_code(url: str, length=6):
@@ -11,6 +11,6 @@ def generate_hash_short_code(url: str, length=6):
     # Converte o hash hexadecimal para um número inteiro
     hash_int = int(hash_object.hexdigest(), 16)
     # Codifica o número inteiro em Base62
-    short_code = base62.encode(hash_int)
+    short_code = pybase62.encode(hash_int)
     # Retorna os primeiros caracteres conforme o tamanho desejado
     return short_code[:length]
