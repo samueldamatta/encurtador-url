@@ -87,8 +87,7 @@ onMounted(() => {
     <!-- Header -->
     <header class="header glass-panel">
       <div class="logo">
-        <span class="icon">🔗</span>
-        <span class="text">Encurtador</span>
+        <span class="text">Encurtador de URLs</span>
       </div>
       <button @click="logout" class="logout-btn">Sair</button>
     </header>
@@ -160,7 +159,6 @@ onMounted(() => {
 
 <style scoped>
 .dashboard {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -225,7 +223,7 @@ onMounted(() => {
 
 .url-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 20px;
 }
 
@@ -251,7 +249,7 @@ onMounted(() => {
 .short-link {
   font-size: 1.2rem;
   font-weight: bold;
-  color: var(--success-color); /* Greenish for active link */
+  color: white;
 }
 
 .copy-btn {
